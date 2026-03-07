@@ -1,0 +1,30 @@
+name: portfolio
+
+on: 
+    push:
+        branches: [main]
+permissions:
+    pages: write  # this is GitHub pages where we are giving the write permission
+    id-token: write         
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment: 
+         name: GitHub Pages
+         url: ${{ steps.deployment.output.page_url }}
+        steps:
+            # get access to your portfolio code via pre-built actions
+            # we can find below action by searching - github actions for deploying the github pages
+            #clone or checkout the code where this workflow is written
+            - name: Checkout Code
+              uses: actions/checkout@v4
+        # SETUP GITHUB PAGES- get access to enable pages and extract carious metada about a site. It can also be used to configure various static site generators
+            - name: Setup Github Pages
+              uses: actions/configure-pages@v4
+
+              #static code artifacts (front end) - composite action for packaging and uploading artifact that can be deployed to GitHub Pages
+            - name: upload static files
+              uses: actions/upload-pages-artifact@v4 
+              # This action deploys a Pages site previously uploaded as an artifact (eg: uses: actions/)
+            - name: Deploy to GitHub Pages
+              uses: actions/deoply-pages@v4

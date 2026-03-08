@@ -1,8 +1,11 @@
 name: portfolio
-
 on: 
     push:
         branches: [main]
+#on:
+    # push:
+    #     branches: [main]
+   # workflow_dispatch:
 permissions:
     pages: write  # this is GitHub pages where we are giving the write permission
     id-token: write         

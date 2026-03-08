@@ -6,14 +6,18 @@ on:
 jobs:
     validate:
         runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false # is ant version is failed it will still install other version will not stop, all versions will run on parallel
+            matrix:
+                python-version: ["3.9","3.10","3.11","3.12","3.13"]  #my job will runs on each versions
         steps:
             - name: checkout code
               uses: actions/checkout@v4
 
-            - name: Python Setup 3.13
+            - name: setup python ${{ matrix.python-version}}
               uses: actions/setup-python@v5
               with:
-                python-version: "3.13"
+                python-version: ${{ matrix.python-version}}
 
             - name: install libraries and dependencies
               run: pip install -r requirements.txt

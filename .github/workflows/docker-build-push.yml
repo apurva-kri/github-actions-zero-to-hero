@@ -21,11 +21,12 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v4
         with:
+          context: . # docker file put on the same repo
           push: true
           tags: |  # pipe use for miltiple lines
-           ${{ vars.DOCKER_HUB_USERNAME}}/github-actions-app:${{ github.GITHUB_HEAD_REF}}
+           ${{ vars.DOCKER_HUB_USERNAME}}/github-actions-app:${{ github.ref}}
            ${{ vars.DOCKER_HUB_USERNAME}}/github-actions-app:latest
-           ${{ vars.DOCKER_HUB_USERNAME}}/github-actions-app:${{ github.GITHUB_SHA}} #tells commmit id
+           ${{ vars.DOCKER_HUB_USERNAME}}/github-actions-app:${{ github.sha}} #tells commmit id
 
 
 

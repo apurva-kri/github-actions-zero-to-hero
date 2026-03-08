@@ -26,7 +26,7 @@ jobs:
           tags: |  # pipe use for miltiple lines
               ${{ vars.DOCKER_HUB_USERNAME }}/github-actions-app:${{ github.ref_name }}
               ${{ vars.DOCKER_HUB_USERNAME }}/github-actions-app:latest
-              ${{ vars.DOCKER_HUB_USERNAME }}/github-actions-app:${{ github.sha }} #tells commmit id
+              ${{ vars.DOCKER_HUB_USERNAME }}/github-actions-app:${{ github.sha }} 
 
 
 

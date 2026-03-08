@@ -1,4 +1,4 @@
-name: Pyhtin Lint
+name: Pyhton Lint-1
 
 on: 
     push:
